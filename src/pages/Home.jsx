@@ -1,35 +1,52 @@
-import {useState, useEffect, useContext} from "react";
+import { useState, useEffect, useContext } from "react";
 
-import {MoviesContext} from "../contexts/MoviesData";
+import ScrollMovieItem from "../components/ScrollMovieItem";
 
-import Item from "../components/Item";
+import { MoviesContext } from "../contexts/MoviesData";
+
+import styled from "styled-components";
+
+const Container = styled.main`
+    display: flex;
+    flex-direction: column;
+`;
+
+const Banner = styled.div`
+    background-image: url("https://image.tmdb.org/t/p/original//8Y43POKjjKDGI9MH89NW0NAzzp8.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+const MovieScroll = styled.div`
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    padding: 1rem;
+    gap: 1rem;
+`;
 
 function Home() {
-    const {movies, searchMovies, getPopularMovies, popularMovies} = useContext(MoviesContext);
-
-    const [inputSearch, setInputSearch] = useState("");
+    const { popularMovies, getPopularMovies } = useContext(MoviesContext);
 
     useEffect(() => {
         getPopularMovies();
     }, []);
 
-    useEffect(() => {
-        if (inputSearch.length > 0) {
-            searchMovies(inputSearch);
-        }
-    }, [inputSearch]);
-
     return (
-        <div>
-            <input type="text" value={inputSearch} onChange={(e) => setInputSearch(e.target.value)} />
-            <ul>{movies.length == 0 ? <h1>Loading</h1> : movies.map((movie) => <Item movie={movie} />)}</ul>
-
-            <ul>
+        <Container>
+            <Banner></Banner>
+            <MovieScroll>
                 {popularMovies.map((movie) => (
-                    <Item movie={movie} />
+                    <ScrollMovieItem key={movie.id} movie={movie} />
                 ))}
-            </ul>
-        </div>
+            </MovieScroll>
+        </Container>
     );
 }
 

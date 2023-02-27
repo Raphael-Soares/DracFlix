@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
 
+import { useState, useEffect } from "react";
+
 import { MdOutlineSearch, MdOutlineNotificationsNone } from "react-icons/md";
 
 import styled from "styled-components";
 
-const scrollY = window.scrollY;
-
 const Container = styled.header`
-    background-color: ${scrollY > 0 ? "rgba(0, 0, 0, 0.8)" : "rgba(0, 0, 0, 0)"};
-
     height: 10vh;
     display: flex;
     align-items: center;
@@ -52,9 +50,22 @@ const ListItemIcon = styled(ListItem)`
     font-size: 2rem;
 `;
 
-function Navbar() {
+function Navbar({ scrollY }) {
+    const [scroll, setScroll] = useState(0);
+
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+            setScroll(window.scrollY);
+        });
+    }, []);
+
     return (
-        <Container>
+        <Container
+            style={{
+                backgroundColor: scroll > 0 ? "#282a36" : "transparent",
+                transition: "all 0.5s ease",
+            }}
+        >
             <Logo>
                 <Link to="/">MovieApp</Link>
             </Logo>

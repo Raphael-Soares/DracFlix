@@ -1,18 +1,20 @@
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Movies from "./pages/Movies";
 import Movie from "./pages/Movie";
 
 import Navbar from "./components/Navbar";
-import {MoviesProvider} from "./contexts/MoviesData";
+import { MoviesProvider } from "./contexts/MoviesData";
 import Favorites from "./pages/Favorites";
+
+const scrollY = window.scrollY;
 
 function App() {
     return (
         <>
             <Router>
-                <Navbar />
+                <Navbar scrollY={scrollY} />
                 <MoviesProvider>
                     <Routes>
                         <Route path="/" element={<Home />}></Route>
