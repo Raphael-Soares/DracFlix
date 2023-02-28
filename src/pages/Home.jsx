@@ -22,7 +22,7 @@ const Body = styled.div`
 `;
 
 function Home() {
-    const [data, setData] = useState([{ title: "Trending", movies: [] }]);
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -52,7 +52,7 @@ function Home() {
             );
 
             setData([
-                { title: "Trending", movies: trending.data.results },
+                { title: "Popular on Netflix", movies: trending.data.results },
                 { title: "Top Rated", movies: topRated.data.results },
                 { title: "Netflix Originals", movies: netflixOriginals.data.results },
                 { title: "Action", movies: action.data.results },

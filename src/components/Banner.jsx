@@ -6,6 +6,8 @@ const Container = styled.div`
     background-position: center;
     background-repeat: no-repeat;
 
+    box-shadow: inset 0px 0px 50px 1px rgb(0, 0, 0);
+
     background-blend-mode: overlay;
     background-color: #282a3640;
 

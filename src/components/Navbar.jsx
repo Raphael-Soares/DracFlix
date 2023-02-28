@@ -36,10 +36,6 @@ const List = styled.ul`
     margin-left: 2rem;
     align-items: center;
 `;
-const ListLeft = styled(List)`
-    margin-left: auto;
-    gap: 1rem;
-`;
 
 const ListItem = styled.li`
     margin-left: 1rem;
@@ -47,7 +43,7 @@ const ListItem = styled.li`
 `;
 
 const ListItemIcon = styled(ListItem)`
-    font-size: 2rem;
+    font-size: 1.5rem;
 `;
 
 const Avatar = styled.img`
@@ -79,31 +75,34 @@ function Navbar({ scrollY }) {
                 transition: "all 0.5s ease",
             }}
         >
-            <Link to="/">
-                <Logo src={NetflixLogo} alt="Netflix" />
-            </Link>
+            <Logo src={NetflixLogo} alt="Netflix" />
+
             <Menu>
                 <List>
-                    <ListItem>Inicio</ListItem>
-                    <ListItem>Series</ListItem>
-                    <ListItem>Filmes</ListItem>
-                    <ListItem>Bombando</ListItem>
-                    <ListItem>Minha Lista</ListItem>
-                    <ListItem>Navegar por idiomas</ListItem>
+                    <ListItem>Home</ListItem>
+                    <ListItem>TV shows</ListItem>
+                    <ListItem>Movies</ListItem>
+                    <ListItem>New & Popular</ListItem>
+                    <ListItem>My List</ListItem>
+                    <ListItem>Browse by Languages</ListItem>
                 </List>
-                <ListLeft>
+
+                <List>
                     <ListItemIcon>
                         <MdOutlineSearch />
                     </ListItemIcon>
-                    <ListItem>Infantil</ListItem>
+
+                    <ListItem>Kids</ListItem>
+
                     <ListItemIcon>
                         <MdOutlineNotificationsNone />
                     </ListItemIcon>
+
                     <AvatarItem>
                         <Avatar src={NetflixAvatar} alt="Netflix Avatar" />
                         <MdArrowDropDown />
                     </AvatarItem>
-                </ListLeft>
+                </List>
             </Menu>
         </Container>
     );
