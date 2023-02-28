@@ -9,7 +9,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1em;
-    margin-bottom: 1em;
+    margin-bottom: 3em;
 `;
 const Title = styled.h1`
     color: #fff;

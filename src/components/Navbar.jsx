@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 
 import { useState, useEffect } from "react";
 
-import { MdOutlineSearch, MdOutlineNotificationsNone } from "react-icons/md";
+import { MdOutlineSearch, MdOutlineNotificationsNone, MdArrowDropDown } from "react-icons/md";
+import NetflixLogo from "../assets/Netflix_logo.svg";
+import NetflixAvatar from "../assets/Netflix-avatar.svg";
 
 import styled from "styled-components";
 
@@ -24,10 +26,8 @@ const Menu = styled.nav`
     width: 100%;
 `;
 
-const Logo = styled.h1`
-    color: #fff;
-    font-size: 1.4rem;
-    font-weight: 700;
+const Logo = styled.img`
+    width: 5rem;
 `;
 
 const List = styled.ul`
@@ -50,6 +50,19 @@ const ListItemIcon = styled(ListItem)`
     font-size: 2rem;
 `;
 
+const Avatar = styled.img`
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.2em;
+`;
+
+const AvatarItem = styled(ListItem)`
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+`;
+
 function Navbar({ scrollY }) {
     const [scroll, setScroll] = useState(0);
 
@@ -66,9 +79,9 @@ function Navbar({ scrollY }) {
                 transition: "all 0.5s ease",
             }}
         >
-            <Logo>
-                <Link to="/">MovieApp</Link>
-            </Logo>
+            <Link to="/">
+                <Logo src={NetflixLogo} alt="Netflix" />
+            </Link>
             <Menu>
                 <List>
                     <ListItem>Inicio</ListItem>
@@ -86,6 +99,10 @@ function Navbar({ scrollY }) {
                     <ListItemIcon>
                         <MdOutlineNotificationsNone />
                     </ListItemIcon>
+                    <AvatarItem>
+                        <Avatar src={NetflixAvatar} alt="Netflix Avatar" />
+                        <MdArrowDropDown />
+                    </AvatarItem>
                 </ListLeft>
             </Menu>
         </Container>
