@@ -62,7 +62,7 @@ function Navbar({ scrollY }) {
     return (
         <Container
             style={{
-                backgroundColor: scroll > 0 ? "#282a36" : "transparent",
+                background: scroll > 0 ? "#282a36" : "transparent",
                 transition: "all 0.5s ease",
             }}
         >
