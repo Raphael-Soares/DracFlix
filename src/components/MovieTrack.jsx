@@ -9,11 +9,13 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1em;
+    margin-bottom: 1em;
 `;
 const Title = styled.h1`
     color: #fff;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     font-weight: 700;
+    letter-spacing: 0.5px;
 `;
 
 const Track = styled.ul`
@@ -29,14 +31,12 @@ const Track = styled.ul`
     }
 `;
 
-function MovieTrack({ movies }) {
+function MovieTrack({ movies, title }) {
     return (
         <Container>
-            <Title>Populares</Title>
+            <Title>{title}</Title>
             <Track>
-                {movies.map((movie) => (
-                    <ScrollMovieItem movie={movie} />
-                ))}
+                {movies && movies.map((movie) => <ScrollMovieItem movie={movie} key={movie.id} />)}
             </Track>
         </Container>
     );

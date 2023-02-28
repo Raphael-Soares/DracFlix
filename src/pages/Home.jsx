@@ -1,11 +1,9 @@
-import { useState, useEffect } from "react";
-
-import ScrollMovieItem from "../components/ScrollMovieItem";
-import MovieTrack from "../components/MovieTrack";
-
-import { URL, API_KEY } from "../utils/constants";
-
+import { useState, useEffect, useMemo } from "react";
 import axios from "axios";
+// import requests from "../utils/Requests";
+import { API_KEY } from "../utils/Keys";
+import MovieTrack from "../components/MovieTrack";
+import Banner from "../components/Banner";
 
 import styled from "styled-components";
 
@@ -15,57 +13,67 @@ const Container = styled.main`
     background-color: #282a36;
 `;
 
-const Banner = styled.div`
-    background-image: url("https://image.tmdb.org/t/p/original//8Y43POKjjKDGI9MH89NW0NAzzp8.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    background-blend-mode: overlay;
-    background-color: #282a3640;
-
-    height: 100vh;
-    width: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`;
-
-const GradientBridge = styled.div`
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(40, 42, 54, 1) 100%);
-    height: 10em;
-    width: 100%;
-    margin-top: auto;
-`;
-
 const Body = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: -4em;
-    height: 100em;
+
     padding: 0 2rem;
 `;
 
 function Home() {
-    const [movies, setMovies] = useState([]);
+    const [data, setData] = useState([{ title: "Trending", movies: [] }]);
 
     useEffect(() => {
-        axios
-            .get(`${URL}/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`)
-            .then((response) => {
-                setMovies(response.data.results);
-                console.log(response.data.results);
-            });
+        const fetchData = async () => {
+            const trending = await axios.get(
+                `https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}&language=en-US`
+            );
+            const topRated = await axios.get(
+                `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
+            );
+            const netflixOriginals = await axios.get(
+                `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_networks=213`
+            );
+            const action = await axios.get(
+                `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=28`
+            );
+            const comedy = await axios.get(
+                `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=35`
+            );
+            const horror = await axios.get(
+                `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=27`
+            );
+            const romance = await axios.get(
+                `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=10749`
+            );
+            const mystery = await axios.get(
+                `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=9648`
+            );
+
+            setData([
+                { title: "Trending", movies: trending.data.results },
+                { title: "Top Rated", movies: topRated.data.results },
+                { title: "Netflix Originals", movies: netflixOriginals.data.results },
+                { title: "Action", movies: action.data.results },
+                { title: "Comedy", movies: comedy.data.results },
+                { title: "Horror", movies: horror.data.results },
+                { title: "Romance", movies: romance.data.results },
+                { title: "Mystery", movies: mystery.data.results },
+            ]);
+        };
+
+        fetchData();
     }, []);
 
     return (
         <Container>
-            <Banner>
-                <GradientBridge></GradientBridge>
-            </Banner>
+            <Banner />
             <Body>
-                <MovieTrack movies={movies} />
+                {data &&
+                    data.map((genre) => (
+                        <MovieTrack key={genre.title} title={genre.title} movies={genre.movies} />
+                    ))}
             </Body>
         </Container>
     );

@@ -11,13 +11,16 @@ const Container = styled.li`
 `;
 
 const Cover = styled.img`
-    border-radius: 0.5rem;
+    border-radius: 0.1rem;
+    width: 15em;
+    height: 10em;
 `;
 
 function ScrollMovieItem({ movie }) {
     return (
         <Container>
-            <Cover src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} />
+            {/* get the backdrop image */}
+            <Cover src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} />
         </Container>
     );
 }
