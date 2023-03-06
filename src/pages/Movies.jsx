@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import axios from "axios";
-
+// import requests from "../utils/Requests";
 import { API_KEY } from "../utils/Keys";
 import MovieTrack from "../components/MovieTrack";
 import Banner from "../components/Banner";
@@ -22,42 +22,37 @@ const Body = styled.div`
 
 const genres = [
     {
-        title: "Trending Now",
-        url: `https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}&language=en-US`,
+        title: "Action",
+        url: `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=28&language=en-US`,
+    },
+    {
+        title: "Comedy",
+
+        url: `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=35&language=en-US`,
+    },
+    {
+        title: "Horror",
+        url: `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=27&language=en-US`,
     },
 
     {
-        title: "Top Rated",
-        url: `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US`,
+        title: "Romance",
+        url: `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=10749&language=en-US`,
     },
     {
-        title: "Action Movies",
-        url: `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=28`,
-    },
-    {
-        title: "Comedy Movies",
-        url: `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=35`,
-    },
-    {
-        title: "Horror Movies",
-        url: `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=27`,
-    },
-    {
-        title: "Romance Movies",
-        url: `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=10749`,
-    },
-    {
-        title: "Documentaries",
-        url: `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=99`,
+        title: "Mystery",
+        url: `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=9648&language=en-US`,
     },
 ];
 
-function Home() {
+function Movies() {
     const [banner, setBanner] = useState("");
 
     useEffect(() => {
         axios
-            .get(`https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}&language=pt-BR`)
+            .get(
+                `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=27&language=en-US`
+            )
             .then((response) => {
                 const random = Math.floor(Math.random() * response.data.results.length - 1);
                 setBanner(response.data.results[random]);
@@ -75,4 +70,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Movies;

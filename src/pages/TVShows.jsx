@@ -17,37 +17,35 @@ const Body = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: -4em;
+    min-height: 100vh;
 `;
 
 const genres = [
     {
         title: "Comedy TV Shows",
-        url: `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_genres=35`,
+        url: `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&with_genres=35`,
     },
 
     {
         title: "Documentaries",
-        url: `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_genres=99`,
+        url: `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&with_genres=99`,
     },
     {
         title: "Romance TV Shows",
-        url: `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_genres=10749`,
+        url: `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&with_genres=10749`,
     },
-    {
-        title: "Sci-Fi TV Shows",
-        url: `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_genres=878`,
-    },
+
     {
         title: "Crime TV Shows",
-        url: `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_genres=80`,
+        url: `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&with_genres=80`,
     },
     {
         title: "Animation TV Shows",
-        url: `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_genres=16`,
+        url: `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&with_genres=16`,
     },
     {
         title: "Mystery TV Shows",
-        url: `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_genres=9648`,
+        url: `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&with_genres=9648`,
     },
 ];
 
@@ -56,7 +54,9 @@ function TVShows() {
 
     useEffect(() => {
         axios
-            .get(`https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}&language=pt-BR`)
+            .get(
+                `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_genres=16&language=en-US`
+            )
             .then((response) => {
                 const random = Math.floor(Math.random() * response.data.results.length - 1);
                 setBanner(response.data.results[random]);

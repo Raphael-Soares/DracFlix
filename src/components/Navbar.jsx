@@ -79,12 +79,26 @@ function Navbar({ scrollY }) {
 
             <Menu>
                 <List>
-                    <ListItem>Home</ListItem>
-                    <ListItem>TV shows</ListItem>
-                    <ListItem>Movies</ListItem>
-                    <ListItem>New & Popular</ListItem>
-                    <ListItem>My List</ListItem>
-                    <ListItem>Browse by Languages</ListItem>
+                    <ListItem>
+                        <Link to="/browse">Home</Link>
+                    </ListItem>
+
+                    <ListItem>
+                        <Link to="/tv-shows">TV Shows</Link>
+                    </ListItem>
+
+                    <ListItem>
+                        <Link to="/movies">Movies</Link>
+                    </ListItem>
+
+                    <ListItem>
+                        <Link to="/latest">New & Popular</Link>
+                    </ListItem>
+
+                    <ListItem>
+                        <Link to="/my-list">My List</Link>
+                    </ListItem>
+                    <ListItem>About The Project</ListItem>
                 </List>
 
                 <List>
