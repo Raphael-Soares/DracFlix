@@ -114,18 +114,7 @@ const Description = styled.p`
     overflow: hidden;
 `;
 
-function Banner() {
-    const [banner, setBanner] = useState("");
-
-    useEffect(() => {
-        axios
-            .get(`https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}&language=pt-BR`)
-            .then((response) => {
-                const random = Math.floor(Math.random() * response.data.results.length - 1);
-                setBanner(response.data.results[random]);
-            });
-    }, []);
-
+function Banner({ banner }) {
     return (
         <Container
             style={{

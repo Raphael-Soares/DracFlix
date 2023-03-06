@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import axios from "axios";
-
+// import requests from "../utils/Requests";
 import { API_KEY } from "../utils/Keys";
 import MovieTrack from "../components/MovieTrack";
 import Banner from "../components/Banner";
@@ -21,37 +21,37 @@ const Body = styled.div`
 
 const genres = [
     {
-        title: "Trending Now",
-        url: `https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}&language=en-US`,
+        title: "Comedy TV Shows",
+        url: `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_genres=35`,
     },
 
     {
-        title: "Top Rated",
-        url: `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US`,
-    },
-    {
-        title: "Action Movies",
-        url: `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=28`,
-    },
-    {
-        title: "Comedy Movies",
-        url: `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=35`,
-    },
-    {
-        title: "Horror Movies",
-        url: `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=27`,
-    },
-    {
-        title: "Romance Movies",
-        url: `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=10749`,
-    },
-    {
         title: "Documentaries",
-        url: `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=99`,
+        url: `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_genres=99`,
+    },
+    {
+        title: "Romance TV Shows",
+        url: `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_genres=10749`,
+    },
+    {
+        title: "Sci-Fi TV Shows",
+        url: `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_genres=878`,
+    },
+    {
+        title: "Crime TV Shows",
+        url: `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_genres=80`,
+    },
+    {
+        title: "Animation TV Shows",
+        url: `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_genres=16`,
+    },
+    {
+        title: "Mystery TV Shows",
+        url: `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_genres=9648`,
     },
 ];
 
-function Home() {
+function TVShows() {
     const [banner, setBanner] = useState("");
 
     useEffect(() => {
@@ -74,4 +74,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default TVShows;
