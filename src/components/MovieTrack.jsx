@@ -61,9 +61,7 @@ const Control = styled.button`
 
 function MovieTrack({ genre: { title, url } }) {
     const [movies, setMovies] = useState([]);
-    const trackRef = useRef(null);
-
-    const trackWidth = trackRef.current?.scrollWidth;
+    const [scroll, setScroll] = useState(0);
 
     async function fetchMovies() {
         const response = await axios.get(url);
@@ -94,7 +92,7 @@ function MovieTrack({ genre: { title, url } }) {
                 <MdKeyboardArrowRight />
             </Control>
 
-            <Track ref={trackRef}>
+            <Track>
                 {movies.map((movie, index) => (
                     <ScrollMovieItem key={movie.id} movie={movie} />
                 ))}
