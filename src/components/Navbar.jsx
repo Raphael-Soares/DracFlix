@@ -75,12 +75,13 @@ function Navbar({ scrollY }) {
                 transition: "all 0.5s ease",
             }}
         >
-            <Logo src={NetflixLogo} alt="Netflix" />
-
+            <Link to="/browse">
+                <Logo src={NetflixLogo} alt="Netflix" />
+            </Link>
             <Menu>
                 <List>
                     <ListItem>
-                        <Link to="/browse">Home</Link>
+                        <Link to="/home">Home</Link>
                     </ListItem>
 
                     <ListItem>
