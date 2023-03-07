@@ -1,6 +1,6 @@
 import { API_KEY } from "../utils/Keys";
 import { useState, useEffect } from "react";
-import ScrollMovieItem from "../components/ScrollMovieItem";
+import MovieCover from "../components/MovieCover";
 
 import styled from "styled-components";
 
@@ -41,7 +41,7 @@ function MyList() {
         <Container>
             <Body>
                 {myList.length > 0 ? (
-                    myList.map((movie) => <ScrollMovieItem movies={movie} />)
+                    myList.map((movie) => <MovieCover movies={movie} />)
                 ) : (
                     <Message>No movies in your list</Message>
                 )}

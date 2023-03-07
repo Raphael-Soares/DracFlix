@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 // import requests from "../utils/Requests";
 import { API_KEY } from "../utils/Keys";
-import MovieTrack from "../components/MovieTrack";
+import MovieSlider from "../components/MovieSlider";
 import Banner from "../components/Banner";
 
 import styled from "styled-components";
@@ -45,7 +45,7 @@ function Latest() {
         <Container>
             <Body>
                 {genres.map((genre) => (
-                    <MovieTrack key={genre.title} genre={genre} />
+                    <MovieSlider key={genre.title} genre={genre} />
                 ))}
             </Body>
         </Container>
