@@ -7,6 +7,7 @@ import Latest from "./pages/Latest";
 import MyList from "./pages/MyList";
 import ChoseProfile from "./pages/ChoseProfile";
 import About from "./pages/About";
+import E404 from "./pages/E404";
 
 import Default from "./layouts/Default";
 import Blank from "./layouts/Blank";
@@ -29,7 +30,7 @@ function App() {
                         <Route path="/about" element={<About />}></Route>
                     </Route>
 
-                    <Route path="*" element={<h1>404 - Not Found</h1>}></Route>
+                    <Route path="*" element={<E404 />}></Route>
                 </Routes>
             </Router>
         </>
