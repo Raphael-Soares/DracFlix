@@ -16,18 +16,17 @@ function App() {
         <>
             <Router>
                 <Routes>
+                    <Route path="/" element={<Blank />}>
+                        <Route path="/" element={<ChoseProfile />}></Route>
+                    </Route>
+
                     <Route path="/" element={<Default />}>
-                        <Route path="/" element={<Home />}></Route>
-                        <Route path="/home" element={<Home />}></Route>
+                        <Route path="/browse" element={<Home />}></Route>
                         <Route path="/tv-shows" element={<TVShows />}></Route>
                         <Route path="/movies" element={<Movies />}></Route>
                         <Route path="/latest" element={<Latest />}></Route>
                         <Route path="/my-list" element={<MyList />}></Route>
                         <Route path="/about" element={<About />}></Route>
-                    </Route>
-
-                    <Route path="/" element={<Blank />}>
-                        <Route path="/browse" element={<ChoseProfile />}></Route>
                     </Route>
 
                     <Route path="*" element={<h1>404 - Not Found</h1>}></Route>

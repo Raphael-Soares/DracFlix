@@ -81,7 +81,7 @@ function Navbar({ scrollY }) {
             <Menu>
                 <List>
                     <ListItem>
-                        <Link to="/home">Home</Link>
+                        <Link to="/browse">Home</Link>
                     </ListItem>
 
                     <ListItem>
