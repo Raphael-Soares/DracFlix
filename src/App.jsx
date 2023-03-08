@@ -6,6 +6,7 @@ import Movies from "./pages/Movies";
 import Latest from "./pages/Latest";
 import MyList from "./pages/MyList";
 import ChoseProfile from "./pages/ChoseProfile";
+import About from "./pages/About";
 
 import Default from "./layouts/Default";
 import Blank from "./layouts/Blank";
@@ -22,6 +23,7 @@ function App() {
                         <Route path="/movies" element={<Movies />}></Route>
                         <Route path="/latest" element={<Latest />}></Route>
                         <Route path="/my-list" element={<MyList />}></Route>
+                        <Route path="/about" element={<About />}></Route>
                     </Route>
 
                     <Route path="/" element={<Blank />}>

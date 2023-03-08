@@ -99,7 +99,10 @@ function Navbar({ scrollY }) {
                     <ListItem>
                         <Link to="/my-list">My List</Link>
                     </ListItem>
-                    <ListItem>About The Project</ListItem>
+
+                    <ListItem>
+                        <Link to="/about">About The Project</Link>
+                    </ListItem>
                 </List>
 
                 <List>
