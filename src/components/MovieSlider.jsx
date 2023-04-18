@@ -53,7 +53,6 @@ const Control = styled.button`
 
 function MovieSlider({ genre: { title, url } }) {
     const [movies, setMovies] = useState([]);
-    const [isMoved, setIsMoved] = useState(false);
 
     const trackRef = useRef();
 
@@ -78,7 +77,6 @@ function MovieSlider({ genre: { title, url } }) {
             distance > -(movies.length * 205 - trackRef.current.clientWidth)
         ) {
             trackRef.current.style.transform = `translateX(${-205 + distance}px)`;
-            setIsMoved(true);
         }
     }
 
@@ -87,11 +85,9 @@ function MovieSlider({ genre: { title, url } }) {
             <Title>{title}</Title>
 
             <Wrapper>
-                {isMoved && (
-                    <Control style={{ left: 0 }} onClick={() => handleScroll("left")}>
-                        <MdKeyboardArrowLeft />
-                    </Control>
-                )}
+                <Control style={{ left: 0 }} onClick={() => handleScroll("left")}>
+                    <MdKeyboardArrowLeft />
+                </Control>
 
                 <Track ref={trackRef}>
                     {movies.map((movie, index) => (
