@@ -1,9 +1,9 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback, lazy } from "react";
 import axios from "axios";
 
 import { API_KEY } from "../utils/Keys";
 import MovieSlider from "../components/MovieSlider";
-import Banner from "../components/Banner";
+const Banner = lazy(() => import("../components/Banner"));
 
 import styled from "styled-components";
 
@@ -56,13 +56,18 @@ function Home() {
     const [banner, setBanner] = useState("");
 
     useEffect(() => {
-        axios
-            .get(`https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}&language=pt-BR`)
-            .then((response) => {
-                const random = Math.floor(Math.random() * response.data.results.length - 1);
-                setBanner(response.data.results[random]);
-            });
+        fetchBanner();
     }, []);
+
+    const fetchBanner = useCallback(async () => {
+        const response = await axios.get(
+            `https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}&language=pt-BR`
+        );
+
+        const random = Math.floor(Math.random() * response.data.results.length - 1);
+        setBanner(response.data.results[random]);
+    }, []);
+
     return (
         <Container>
             <Banner banner={banner} />

@@ -40,6 +40,8 @@ const List = styled.ul`
 const ListItem = styled.li`
     margin-left: 1rem;
     color: #fff;
+
+    font-size: 14px;
 `;
 
 const ListItemIcon = styled(ListItem)`
