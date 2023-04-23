@@ -10,7 +10,7 @@ import styled from "styled-components";
 const Container = styled.main`
     display: flex;
     flex-direction: column;
-    background-color: #282a36;
+    background-color: #0f0f0f;
 `;
 
 const Body = styled.div`

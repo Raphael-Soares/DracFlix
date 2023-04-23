@@ -73,31 +73,37 @@ function ChoseProfile() {
     return (
         <Container>
             <Title>Who is watching?</Title>
-            <Link to="/browse">
-                <List>
+            <List>
+                <Link to="/browse">
                     <Icon>
                         <IconImage src={NetflixAvatar}></IconImage>
-                        <IconName>Profile 1</IconName>
+                        <IconName>John Doe</IconName>
                     </Icon>
+                </Link>
+                <Link to="/browse">
                     <Icon>
                         <IconImage src={NetflixAvatar}></IconImage>
-                        <IconName>Profile 2</IconName>
+                        <IconName>Jane Smith</IconName>
                     </Icon>
+                </Link>
+                <Link to="/browse">
                     <Icon>
                         <IconImage src={NetflixAvatar}></IconImage>
-                        <IconName>Profile 3</IconName>
+                        <IconName>Alex Johnson</IconName>
                     </Icon>
+                </Link>
+                <Link to="/browse">
                     <Icon>
                         <IconImage src={NetflixAvatar}></IconImage>
-                        <IconName>Profile 4</IconName>
+                        <IconName>Emily Davis</IconName>
                     </Icon>
-                    <AddIcon>
-                        <Circle>
-                            <MdAdd size={100} color="#fff" />
-                        </Circle>
-                    </AddIcon>
-                </List>
-            </Link>
+                </Link>
+                <AddIcon>
+                    <Circle>
+                        <MdAdd size={100} color="#fff" />
+                    </Circle>
+                </AddIcon>
+            </List>
         </Container>
     );
 }

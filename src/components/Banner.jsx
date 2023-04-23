@@ -15,7 +15,7 @@ const Container = styled.div`
     box-shadow: inset 0px 0px 50px 1px rgb(0, 0, 0);
 
     background-blend-mode: overlay;
-    background-color: #282a3640;
+    background-color: #29292925;
 
     height: 100vh;
     width: 100%;
@@ -27,7 +27,7 @@ const Container = styled.div`
 `;
 
 const GradientBridge = styled.div`
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(40, 42, 54, 1) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #0f0f0f 100%);
     height: 10em;
     width: 100%;
     margin-top: auto;
