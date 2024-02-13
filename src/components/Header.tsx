@@ -10,7 +10,7 @@ export default async function Header() {
     <div className='relative'>
       <Image src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={movie.title} width={1920} height={1080} />
 
-      <div className=''></div>
+      <div className='h-32 w-full bg-gradient-to-t from-black  bg absolute bottom-0'></div>
     </div>
   );
 }
